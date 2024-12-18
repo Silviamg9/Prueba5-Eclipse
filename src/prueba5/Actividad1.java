@@ -8,24 +8,48 @@ public class Actividad1 {
 		var sc = new Scanner(System.in);
 		
 		System.out.println("Introducir una frase: ");
-		String palabra = sc.nextLine();
+		String frase = sc.nextLine().trim();
 		
-		int caracteres = palabra.length();
-		char mayorLong;
-		char menorLong;
-		
-		for (int i = 1; i > palabra.length(); i++) {
-			mayorLong = palabra.charAt(i);
-		}
-		
-		for (int i = 1; i < palabra.length(); i++) {
-			menorLong = palabra.charAt(i);
-		}
-		
-		
-		System.out.println("La palabra de mayor longitud es: " + mayorLong);
-		System.out.println("La palabra de menor longitud es: " + menorLong);
-		System.out.println("El número de caracteres de esta frase es: " + caracteres);
+		int numPalabras = 0;
+        String palabraMayor = "";
+        String palabraMenor = null;
+        String palabraActual = "";
+
+        for (int i = 0; i < frase.length(); i++) {
+            char c = frase.charAt(i);
+
+            if (c == ' ') {
+                if (palabraActual.length() > 0) {
+                    numPalabras++;
+
+                    if (palabraActual.length() > palabraMayor.length()) {
+                        palabraMayor = palabraActual;
+                    }
+                    if (palabraMenor == null || palabraActual.length() < palabraMenor.length()) {
+                        palabraMenor = palabraActual;
+                    }
+
+                    palabraActual = "";
+                }
+            } else {
+                palabraActual += c;
+            }
+        }
+
+        if (palabraActual.length() > 0) {
+            numPalabras++;
+
+            if (palabraActual.length() > palabraMayor.length()) {
+                palabraMayor = palabraActual;
+            }
+            if (palabraMenor == null || palabraActual.length() < palabraMenor.length()) {
+                palabraMenor = palabraActual;
+            }
+        }
+        
+        System.out.println("Número de palabras de la frase es " + numPalabras);
+        System.out.println("La palabra de mayor longitud es " + palabraMayor + "' con " + palabraMayor.length() + " caracteres.");
+        System.out.println("La palabra de menor longitud es " + palabraMenor + "' con " + palabraMenor.length() + " caracteres.");
 		
 		sc.close();
 	}

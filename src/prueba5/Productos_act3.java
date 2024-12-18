@@ -5,7 +5,6 @@ public class Productos_act3 {
 	private String nombre;
 	private int cantDisponible;
 	private double precio;
-	private int stockSeguridad = 50;
 	
 	public Productos_act3 (String nombre, int cantDisponible, double precio) {
 		this.nombre = nombre;
@@ -36,29 +35,8 @@ public class Productos_act3 {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-
-	public int getStockSeguridad() {
-		return stockSeguridad;
-	}
-
-	public void setStockSeguridad(int stockSeguridad) {
-		this.stockSeguridad = stockSeguridad;
-	}
 	
-	public void buscar (String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public void actualizar (int stock) {
-		
-	}
-	
-	public void calcular (double precio) {
-		
-	}
-
-	public String toString() {
-		return "Productos_act3 [Nombre = " + nombre + ", CantDisponible = " + cantDisponible + ", Precio = " + precio + "]";
-	}
-	
+	public void mostrarProducto() {
+        System.out.println("Nombre: " + nombre + ", Cantidad Disponible: " + cantDisponible + ", Precio: " + precio);
+    }
 }
